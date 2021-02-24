@@ -17,4 +17,4 @@ The web-application is distributed on an [Amazon AWS Server](https://aws.amazon.
 Vincenzo Lombardi
 - [GithHub](https://github.com/VincenzoLomba)
 - [StackOverflow](https://stackoverflow.com/users/4244130/vincelomba)
-- [VirtualeUnibo](https://virtuale.unibo.it/user/view.php?id=47448&course=24590)
+- [VirtualeUnibo](https://virtuale.unibo.it/user/profile.php?id=47448)
