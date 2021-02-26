@@ -8,8 +8,8 @@ This web-application is created using the [Angular Framework](https://angular.io
 Additional modules:
 - [Angular Flex Layout](https://github.com/angular/flex-layout)
 - [Angular Material Design Progress Buttons](https://github.com/michaeldoye/mat-progress-buttons)
-- [Angular Resize Event](https://github.com/vdolek/angular-resize-event#angular-resize-event)
-- [File Saver](https://github.com/eligrey/FileSaver.js)
+<!--- - [Angular Resize Event](https://github.com/vdolek/angular-resize-event#angular-resize-event) --->
+<!--- - [File Saver](https://github.com/eligrey/FileSaver.js) --->
 
 The web-application is distributed on an [Amazon AWS Server](https://aws.amazon.com/it/) using [Docker](https://www.docker.com/get-started).<br/>
 
