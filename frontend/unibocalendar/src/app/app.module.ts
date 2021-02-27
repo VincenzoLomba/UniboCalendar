@@ -4,10 +4,12 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 
+// Customm imports:
 import { RouterModule, Routes } from '@angular/router';
 import { CalendarViewComponent } from './modules/calendar/calendar-view/calendar-view.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
-// Added by (and for) Angular Material:
+// Added by (and for) Angular Material
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const appRoutes: Routes = [
@@ -33,7 +35,8 @@ const appRoutes: Routes = [
       useHash: true,
       scrollPositionRestoration: 'enabled'
     }),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    FlexLayoutModule
   ],
   providers: [
     Title
