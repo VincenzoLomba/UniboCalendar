@@ -7,6 +7,9 @@ import { AppComponent } from './app.component';
 import { RouterModule, Routes } from '@angular/router';
 import { CalendarViewComponent } from './modules/calendar/calendar-view/calendar-view.component';
 
+// Added by (and for) Angular Material:
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 const appRoutes: Routes = [
   {
     path: '', component: CalendarViewComponent
@@ -29,7 +32,8 @@ const appRoutes: Routes = [
        */
       useHash: true,
       scrollPositionRestoration: 'enabled'
-    })
+    }),
+    BrowserAnimationsModule
   ],
   providers: [
     Title
