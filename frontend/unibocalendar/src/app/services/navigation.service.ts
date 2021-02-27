@@ -1,12 +1,16 @@
 import { Injectable } from '@angular/core';
 
+export enum ScreenSize {
+  xs = 'xs', sm = 'sm', md = 'md', lg = 'lg', xl = 'xl'
+}
+
 @Injectable({
   providedIn: 'root'
 })
 export class NavigationService {
 
   private webAppDomain: string = null;
-  private screenSize: string = null;
+  private screenSize: ScreenSize;
 
   constructor() { }
 
@@ -23,10 +27,11 @@ export class NavigationService {
    */
   setScreenSize(screenSize: string): boolean {
     if (screenSize === 'xs' || screenSize === 'sm' || screenSize === 'md' || screenSize === 'lg' || screenSize === 'xl') {
-      this.screenSize = screenSize;
+      this.screenSize = ScreenSize[screenSize];
       return true;
     }
     return false;
   }
+  getScreenSize(): ScreenSize { return this.screenSize; }
 
 }

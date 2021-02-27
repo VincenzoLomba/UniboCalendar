@@ -1,5 +1,5 @@
 import { environment } from './../environments/environment';
-import { NavigationService } from './services/navigation.service';
+import { NavigationService, ScreenSize } from './services/navigation.service';
 import { permaEnvironment } from './../environments/permaenvironment';
 import { MediaChange, MediaObserver } from '@angular/flex-layout';
 import { Component, OnInit } from '@angular/core';
@@ -45,4 +45,8 @@ export class AppComponent implements OnInit{
     console.log('WebApp Domain: \'' + this.navigationService.getWebAppDomain() + '\'');
   }
 
+  getScreenSize(): ScreenSize {
+    return this.navigationService.getScreenSize();
+  }
 }
+
