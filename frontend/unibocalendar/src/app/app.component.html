@@ -1,9 +1,48 @@
-<div class="appcomponent-container">
+<div class="appcomponent-container" [class.on-small-screen]="onSmallScreen()">
 
-  <mat-toolbar color="primary" class="toolbar">
-
+  <!--
+    The toolbar height is automatically adjusted by Angular.
+    It has been verified that for 'xs' screens it's set to 56px and for others screens it's set to 64px.
+    In the following code the toolbar height is ovverriden in order to be value indicated in the environment for all screens that makes "onSmallScreen()" return true!
+  --->
+  <mat-toolbar
+      color="primary"
+      class="toolbar"
+      [ngClass]="(!sidenav.opened || ( !onSmallScreen() && sidenavModeIsSideOnBigScreens())) ? ('mat-elevation-z' + getToolbarElevation()) : ''"
+      [class.addressbar-autoscrolling-enabled]="addressBarAutoHidingIsEnabledOnSmallScreens()"
+      [style.height.px]="onSmallScreen() ? smallScreenToolbarHeight() : 64">
+    <button mat-icon-button (click)="sidenav.toggle()"><mat-icon>menu</mat-icon></button>
+        
   </mat-toolbar>
 
-  <router-outlet></router-outlet>
+  <!-- 
+    As the Angular Material Docs says (https://material.angular.io/components/sidenav/overview#creating-a-responsive-layout-for-mobile--desktop),
+    we have to set the "mat-sidenav-container marginTop.px" to "value" when the screen need to be in the addressbar auto-hiding mode (for small screens),
+    where "value" is the eight that we have choosen the toolbar must have when on small screens!
+
+    Also, the "mat-sidenav" needs "fixedInViewport" to be enabled when auto-hiding mode is required (and needs "fixedTopGap" set to "value" permanently)
+  -->
+  <mat-sidenav-container
+      class="sidenav-container"
+      [class.addressbar-autoscrolling-enabled]="addressBarAutoHidingIsEnabledOnSmallScreens()"
+      [style.marginTop.px]="onSmallScreen() && addressBarAutoHidingIsEnabledOnSmallScreens() ? smallScreenToolbarHeight() : 0">
+    <mat-sidenav 
+        class = "sidenav"
+        #sidenav
+        [autoFocus]="false"
+        [mode]="onSmallScreen() ? 'over' : (sidenavModeIsSideOnBigScreens() ? 'side': 'over')" 
+        [fixedInViewport]="onSmallScreen() && addressBarAutoHidingIsEnabledOnSmallScreens()"
+        [fixedTopGap]="smallScreenToolbarHeight()"
+        [style.width.px]="500">
+
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+      <div *ngIf="loadingAppComponent"><mat-progress-bar mode="query" color="primary"></mat-progress-bar></div>
+      <div *ngIf="!loadingAppComponent"><router-outlet></router-outlet></div>
+    </mat-sidenav-content>
+
+  </mat-sidenav-container>
 
 </div>
+
