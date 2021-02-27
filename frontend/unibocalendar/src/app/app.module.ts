@@ -1,13 +1,15 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { CalendarModule } from './modules/calendar/calendar.module';
+import { BrowserModule, Title } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 
 import { RouterModule, Routes } from '@angular/router';
+import { CalendarViewComponent } from './modules/calendar/calendar-view/calendar-view.component';
 
 const appRoutes: Routes = [
   {
-    // path: 'path', component: Component, canActive: [CanActive]
+    path: '', component: CalendarViewComponent
   }
 ];
 
@@ -17,6 +19,7 @@ const appRoutes: Routes = [
   ],
   imports: [
     BrowserModule,
+    CalendarModule,
     RouterModule.forRoot(appRoutes, {
       /* Reference: https://angular.io/api/router/ExtraOptions
        *
@@ -26,9 +29,11 @@ const appRoutes: Routes = [
        */
       useHash: true,
       scrollPositionRestoration: 'enabled'
-    }),
+    })
   ],
-  providers: [],
+  providers: [
+    Title
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
