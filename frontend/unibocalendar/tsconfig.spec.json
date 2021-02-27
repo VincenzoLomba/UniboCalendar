@@ -15,6 +15,7 @@
     "src/**/*.spec.ts",
     "src/**/*.d.ts"
   ],
+  // https://stackoverflow.com/questions/66350354/suppress-angular-language-service-vscode-extensions-stricttemplates-in-angular
   "angularCompilerOptions": {
     "strictTemplates": true
   }
