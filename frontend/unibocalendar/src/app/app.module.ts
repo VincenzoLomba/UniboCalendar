@@ -27,15 +27,16 @@ const appRoutes: Routes = [
     BrowserModule,
     CalendarModule,
     RouterModule.forRoot(appRoutes, {
-      /* Reference: https://angular.io/api/router/ExtraOptions
-       *
-       * UseHash for Apache Tomcat:
-       * https://stackoverflow.com/questions/56363680/angular-routing-not-working-when-deployed-to-tomcat-9-ubuntu-18-04
-       * (notice that ApacheTomcat is not part of this project in the first place BUT it might will be in future releases)
-       */
-      useHash: true,
-      scrollPositionRestoration: 'enabled'
-    }),
+    /* Reference: https://angular.io/api/router/ExtraOptions
+     *
+     * UseHash for Apache Tomcat:
+     * https://stackoverflow.com/questions/56363680/angular-routing-not-working-when-deployed-to-tomcat-9-ubuntu-18-04
+     * (notice that ApacheTomcat is not part of this project in the first place BUT it might will be in future releases)
+     */
+    useHash: true,
+    scrollPositionRestoration: 'enabled',
+    relativeLinkResolution: 'legacy'
+}),
     BrowserAnimationsModule,
     FlexLayoutModule,
     MatToolbarModule
