@@ -1,0 +1,25 @@
+<div style="text-align: center;">
+    
+    <p style="margin: 45px 0px 0px 0px; padding: 0px 10px 27px 10px" [style.color]="getWebappMainColor()" [style.font-size.px]="screenSizeIsXs() ? 28 : 38">
+        Apri un nuovo calendario!
+    </p>
+    <p style="margin: 0px; padding: 10px 15px 5px 15px" [style.font-size.px]="screenSizeIsXs() ? 16 : 18">
+        Inserisci il nickname della facoltà di cui vuoi aprire il calendario<span *ngIf="coursesAvailable()"> (oppure ri-apri uno dei calendari precedenti)</span>!
+        <br *ngIf="coursesAvailable() ? !onSmallScreen() : !screenSizeIsXs()">
+        Ricorda di fare attenzione a maiuscole e minuscole.
+    </p>
+    <button mat-stroked-button [style.font-size.px]="screenSizeIsXs() ? 14 : 16" (click)="showHowToFindNicknameDialog()">Come ottenere il nickname di una facoltà?</button>
+    <div style="display: flex; justify-content: center;">
+        <form (ngSubmit)="onNicknameSubmit()" style="margin-top: 40px; margin-bottom: 5px; width: 100%; max-width: 400px">
+            <mat-form-field style="width: 70%">
+            <mat-label>Nickname facoltà</mat-label>
+            <input matInput #nickname [formControl]="nicknameFormControl" type="text"
+                (focus)="nicknameFormControl.suspendValidationAndClean()"
+                (focusout)="nicknameFormControl.restartValidationAndCheck()"
+                (input)="nicknameFormControl.suspendValidationAndClean()">
+            <mat-error>{{nicknameFormControl.loadError()}}</mat-error>
+            </mat-form-field>
+        </form>
+    </div>
+    <mat-spinner-button type="submit" [options]="submitButtonOptions" (btnClick)="onNicknameSubmit()"></mat-spinner-button>
+</div>

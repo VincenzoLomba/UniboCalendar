@@ -9,10 +9,10 @@
       color="primary"
       class="toolbar"
       [ngClass]="(!sidenav.opened || ( !onSmallScreen() && sidenavModeIsSideOnBigScreens())) ? ('mat-elevation-z' + getToolbarElevation()) : ''"
-      [class.addressbar-autoscrolling-enabled]="addressBarAutoHidingIsEnabledOnSmallScreens()"
+      [class.addressbar-autoscrolling-enabled]="addressBarAutoHidingOnSmallScreensIsEnabled()"
       [style.height.px]="onSmallScreen() ? smallScreenToolbarHeight() : 64">
-    <button mat-icon-button (click)="sidenav.toggle()"><mat-icon>menu</mat-icon></button>
-        
+    <button class="menu-button" mat-icon-button (click)="sidenav.toggle()"><mat-icon>menu</mat-icon></button>
+    <span class="title" style="font-size: 22px;">{{getWebappTitle()}}</span>
   </mat-toolbar>
 
   <!-- 
@@ -24,14 +24,14 @@
   -->
   <mat-sidenav-container
       class="sidenav-container"
-      [class.addressbar-autoscrolling-enabled]="addressBarAutoHidingIsEnabledOnSmallScreens()"
-      [style.marginTop.px]="onSmallScreen() && addressBarAutoHidingIsEnabledOnSmallScreens() ? smallScreenToolbarHeight() : 0">
+      [class.addressbar-autoscrolling-enabled]="addressBarAutoHidingOnSmallScreensIsEnabled()"
+      [style.marginTop.px]="onSmallScreen() && addressBarAutoHidingOnSmallScreensIsEnabled() ? smallScreenToolbarHeight() : 0">
     <mat-sidenav 
         class = "sidenav"
         #sidenav
         [autoFocus]="false"
         [mode]="onSmallScreen() ? 'over' : (sidenavModeIsSideOnBigScreens() ? 'side': 'over')" 
-        [fixedInViewport]="onSmallScreen() && addressBarAutoHidingIsEnabledOnSmallScreens()"
+        [fixedInViewport]="onSmallScreen() && addressBarAutoHidingOnSmallScreensIsEnabled()"
         [fixedTopGap]="smallScreenToolbarHeight()"
         [style.width.px]="500">
 

@@ -32,3 +32,16 @@
      */
     flex: 1 0 auto;
 }
+
+.menu-button {
+    /* This is required to make the title NOT overlaing the menu button. */
+    z-index: 1;
+}
+
+.title {
+    /* The width of this element is exaggerated on purpose.*/
+    position: fixed;
+    text-align: center;
+    width: 500px;
+    left: calc(50% - 250px);
+}

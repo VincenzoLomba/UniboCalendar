@@ -1,10 +1,11 @@
 import { environment } from './../environments/environment';
-import { NavigationService, ScreenSize } from './services/navigation.service';
+import { NavigationService } from './services/navigation.service';
 import { permaEnvironment } from './../environments/permaenvironment';
 import { MediaChange, MediaObserver } from '@angular/flex-layout';
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { filter, map } from 'rxjs/operators';
+import { CalendarService } from './modules/calendar/calendar.service';
 
 @Component({
   selector: 'app-root',
@@ -18,12 +19,13 @@ export class AppComponent implements OnInit{
   constructor(
     private titleService: Title,
     private mediaObserver: MediaObserver,
-    private navigationService: NavigationService)
-  {}
+    private navigationService: NavigationService,
+    private calendarService: CalendarService
+  ){}
 
   ngOnInit(): void {
 
-    // Updating the application Title:
+    // Updating the webapp title:
     this.titleService.setTitle(permaEnvironment.webappTitle);
 
     // Watching the size of the webapp page:
@@ -47,16 +49,20 @@ export class AppComponent implements OnInit{
     }
     console.log('WebApp Domain: \'' + this.navigationService.getWebAppDomain() + '\'');
 
-    // Set the browser bar auto disappearing scrolling policy
+    // Set the browser bar auto disappearing on scrolling policy
     this.navigationService.disableAddressBarAutoHidingOnSmallScreens();
+
+    // Loading saved courses for the current user
+    this.calendarService.loadAvailableCourses();
 
     this.loadingAppComponent = false;
   }
 
   onSmallScreen(): boolean { return this.navigationService.onSmallScreen(); }
   getToolbarElevation(): number { return permaEnvironment.toolbarElevation; }
-  addressBarAutoHidingIsEnabledOnSmallScreens(): boolean { return this.navigationService.addressBarAutoHidingIsEnabledOnSmallScreens(); }
+  addressBarAutoHidingOnSmallScreensIsEnabled(): boolean { return this.navigationService.addressBarAutoHidingOnSmallScreensIsEnabled(); }
   smallScreenToolbarHeight(): number { return permaEnvironment.smallScreenToolbarHeight; }
   sidenavModeIsSideOnBigScreens(): boolean { return permaEnvironment.sidenavModeIsSideOnBigScreens; }
+  getWebappTitle(): string { return permaEnvironment.webappTitle; }
 }
 

@@ -4,10 +4,14 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 
-// Customm imports:
+// Custom imports:
+import { permaEnvironment } from 'src/environments/permaenvironment';
 import { RouterModule, Routes } from '@angular/router';
 import { CalendarViewComponent } from './modules/calendar/calendar-view/calendar-view.component';
+import { OpenCalendarComponent } from './modules/calendar/open-calendar/open-calendar.component';
+import { ShowCalendarComponent } from './modules/calendar/show-calendar/show-calendar.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatProgressButtonsModule } from 'mat-progress-buttons';
 
 // Added by (and for) Angular Material
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -19,7 +23,15 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 const appRoutes: Routes = [
   {
-    path: '', component: CalendarViewComponent
+    path: '', component: CalendarViewComponent,
+      children: [
+         { path: '', component: OpenCalendarComponent },
+         { path: ':' + permaEnvironment.courseIdentifierLabel, component: ShowCalendarComponent },
+         {
+           path: ':' + permaEnvironment.courseIdentifierLabel + '/:' + permaEnvironment.yearIdentifierLabel,
+            component: ShowCalendarComponent
+         }
+      ]
   }
 ];
 
@@ -47,7 +59,8 @@ const appRoutes: Routes = [
     MatSidenavModule,
     MatIconModule,
     MatButtonModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatProgressButtonsModule.forRoot()
   ],
   providers: [
     Title

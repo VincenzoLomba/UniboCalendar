@@ -12,7 +12,7 @@ export class NavigationService {
   private webAppDomain: string = null;
   private screenSize: ScreenSize = null;
   // To enable the feature that make the browser address bar disappear when scrolling on mobiles.
-  private addressBarAutoHidingEnabledOnSmallScreens = null;
+  private addressBarAutoHidingOnSmallScreensEnabled = null;
 
   constructor() { }
 
@@ -37,7 +37,7 @@ export class NavigationService {
   getScreenSize(): ScreenSize { return this.screenSize; }
   onSmallScreen(): boolean { return this.screenSize === ScreenSize.xs || this.screenSize === ScreenSize.sm; }
 
-  enableAddressBarAutoHidingOnSmallScreens(): void { this.addressBarAutoHidingEnabledOnSmallScreens = true; }
-  disableAddressBarAutoHidingOnSmallScreens(): void { this.addressBarAutoHidingEnabledOnSmallScreens = false; }
-  addressBarAutoHidingIsEnabledOnSmallScreens(): boolean { return this.addressBarAutoHidingEnabledOnSmallScreens; }
+  enableAddressBarAutoHidingOnSmallScreens(): void { this.addressBarAutoHidingOnSmallScreensEnabled = true; }
+  disableAddressBarAutoHidingOnSmallScreens(): void { this.addressBarAutoHidingOnSmallScreensEnabled = false; }
+  addressBarAutoHidingOnSmallScreensIsEnabled(): boolean { return this.addressBarAutoHidingOnSmallScreensEnabled; }
 }

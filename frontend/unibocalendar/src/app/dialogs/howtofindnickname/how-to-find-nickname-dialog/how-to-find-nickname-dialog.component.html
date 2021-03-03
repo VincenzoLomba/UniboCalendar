@@ -1,0 +1,20 @@
+<div style="text-align: center;">
+<h2 mat-dialog-title [style.color]="getWebappMainColor()" style="font-size: 22px; margin: 10px 0px 10px 0px;">
+    Come ottenere un nickname?
+</h2>
+<mat-dialog-content>
+    <p>
+    Per ottenere il nickname di una facoltà devi recarti sulla home page del sito web della stessa.
+    L'indirizzo di tale pagina web contiene il nickname della facoltà!
+    <br><br>
+    Ad esempio, per la facoltà di Ingegneria dell'Automazione <a href='https://corsi.unibo.it/laurea/IngegneriaAutomazione'>questa è la home page</a>
+    ed il nickname risulta quindi essere:
+    <br><br>
+    <span [style.color]="getWebappMainColor()" style="font-size: 17px;"><i>IngegneriaAutomazione</i></span>
+    </p>
+</mat-dialog-content>
+<mat-dialog-actions align="center">
+    <button mat-stroked-button color="primary" [mat-dialog-close]="null">CHIUDI</button>
+    <button mat-stroked-button color="primary" [mat-dialog-close]="'IngegneriaAutomazione'">PROVA&nbsp;&nbsp;<mat-icon>open_in_new</mat-icon></button>
+</mat-dialog-actions>
+</div>
